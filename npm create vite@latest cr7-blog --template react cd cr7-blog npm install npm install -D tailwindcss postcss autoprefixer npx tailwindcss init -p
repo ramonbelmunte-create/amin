@@ -1,0 +1,86 @@
+import React from "react";
+
+// === Datos de los posts ===
+const posts = [
+  {
+    id: 1,
+    title: "CR7 anota un nuevo hat-trick en Arabia Saudita 🇸🇦",
+    date: "Noviembre 2025",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg",
+    content:
+      "Cristiano sigue demostrando su vigencia con un nuevo hat-trick en la liga saudí, acercándose a otro récord goleador histórico.",
+  },
+  {
+    id: 2,
+    title: "Récord de goles internacionales 🌍",
+    date: "Octubre 2025",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9a/Cristiano_Ronaldo_Portugal.jpg",
+    content:
+      "Ronaldo amplía su ventaja como máximo goleador histórico de selecciones, reafirmando su legado con Portugal.",
+  },
+  {
+    id: 3,
+    title: "CR7 inspira a una nueva generación 💪",
+    date: "Septiembre 2025",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/5/5c/Cristiano_Ronaldo_2019.jpg",
+    content:
+      "Su ética de trabajo y disciplina siguen siendo ejemplo para jóvenes futbolistas alrededor del mundo.",
+  },
+];
+
+// === Componente Header ===
+function Header() {
+  return (
+    <header className="bg-black text-white py-6 shadow-lg">
+      <div className="max-w-5xl mx-auto text-center">
+        <h1 className="text-4xl font-extrabold tracking-wide">CR7 Blog</h1>
+        <p className="text-gray-300 mt-2">
+          Noticias, logros y pasión por Cristiano Ronaldo
+        </p>
+      </div>
+    </header>
+  );
+}
+
+// === Componente PostCard ===
+function PostCard({ post }) {
+  return (
+    <article className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
+      <img
+        src={post.image}
+        alt={post.title}
+        className="w-full h-48 object-cover"
+      />
+      <div className="p-4">
+        <h3 className="font-bold text-xl mb-2">{post.title}</h3>
+        <p className="text-gray-600 text-sm">{post.date}</p>
+        <p className="mt-3 text-gray-700">{post.content}</p>
+      </div>
+    </article>
+  );
+}
+
+// === Componente principal App ===
+export default function App() {
+  return (
+    <div className="min-h-screen bg-gray-100 text-gray-900">
+      <Header />
+      <main className="max-w-5xl mx-auto px-4 py-8">
+        <h2 className="text-3xl font-bold mb-6 text-center">
+          Últimas Noticias de CR7 ⚽
+        </h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
+        </div>
+      </main>
+      <footer className="text-center py-6 text-sm text-gray-500">
+        © {new Date().getFullYear()} Blog CR7 — Hecho con ❤️ por fans
+      </footer>
+    </div>
+  );
+}
